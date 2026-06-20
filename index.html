@@ -3860,7 +3860,7 @@ HORAS: 0=08:00,1=09:00,2=10:00,3=11:00,4=12:00,5=13:00,6=17:00,7=18:00,8=19:00,9
 TIPOS: jur=Jurídicas, soc=Sociales, tec=Técnicas, fis=Físicas, rep=Repaso, sev=ClaseSevilla, dh=ClaseDH, lib=Libre`;
 
   try {
-    const response=await fetchIA({model:'claude-sonnet-4-20250514',max_tokens:3000,messages:[{role:'user',content:prompt},{role:'assistant',content:'{"resumen":"'}]});
+    const response=await fetchIA({model:'claude-sonnet-4-6',max_tokens:3000,messages:[{role:'user',content:prompt},{role:'assistant',content:'{"resumen":"'}]});
     // fetchIA returns parsed JSON directly
     if(data.error)throw new Error(`API: ${data.error.message}`);
     const raw='{"resumen":"'+(data.content?.map(b=>b.text||'').join('')||'');
@@ -6345,7 +6345,7 @@ Datos del alumno: ${JSON.stringify(ctx, null, 2)}`
 
   try {
     const response = await fetchIA({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-6',
         max_tokens: 1000,
         system: 'Eres un asistente experto en preparación de oposiciones a Policía Nacional española. Respondes siempre en español, de forma clara, estructurada y motivadora. Usas los datos reales del alumno para dar consejos concretos y personalizados.',
         messages: [{role: 'user', content: prompts[tipo]}]
@@ -6433,7 +6433,7 @@ Datos: ${JSON.stringify(grupoCxt)}`;
 
   try {
     const response = await fetchIA({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-6',
         max_tokens: 1000,
         system: 'Eres un asistente experto en oposiciones a Policía Nacional. Respondes en español, de forma clara y estructurada.',
         messages: [{role:'user', content: prompt}]
@@ -6599,7 +6599,7 @@ INSTRUCCIONES:
 
   try {
     const response = await fetchIA({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-6',
         max_tokens: 1000,
         system: systemPrompt,
         messages: iaChat.slice(-8) // últimos 8 mensajes para contexto de conversación
